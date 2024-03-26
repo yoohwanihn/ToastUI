@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TOAST UI Datepicker CSS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css">
+    <!-- TOAST UI Timepicker CSS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css">
+    <!-- TOAST UI Grid CSS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
+    <!-- jQuery JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- TOAST UI Datepicker JS -->
+    <script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.js"></script>
+    <!-- TOAST UI Timepicker JS -->
+    <script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.js"></script>
+    <!-- TOAST UI Grid JS -->
+    <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function () {
+            let gridData = [
+                { id: 1, name: 'John Doe', age: 30 },
+                { id: 2, name: 'Jane Smith', age: 25 },
+                { id: 3, name: 'Bob Johnson', age: 40 }
+            ]
+
+            const Grid = tui.Grid;
+
+            Grid.applyTheme('default', {      // 테마는 default,striped,clean 
+                cell: {
+                    normal: {
+                        border: 'black'
+                    },
+                    header: {
+                        background: 'gray',
+                        text: 'white'
+                    },
+                    evenRow: {
+                        background: '#fee'
+                    }
+                }
+            });
+
+            const grid = new tui.Grid({
+                el: document.getElementById('grid'),
+                data: gridData,
+                scrollX: false,
+                scrollY: false,
+                columns: [
+                    { header: 'ID', name: 'id', editor: 'text' },
+                    { header: 'Name', name: 'name' },
+                    { header: 'Age', name: 'age' },
+                    {
+                        header: '잘됨',
+                        name: 'datePicker',
+                        editor: {
+                            type: 'datePicker',  // Datepicker 에디터 사용
+                            options: {
+                                format: 'yyyy-MM-dd'  // 날짜 형식 설정
+                            }
+                        }
+                    }
+                ],
+                summary: {
+                    position: 'bottom',
+                    height: 100,
+                    columnContent: {
+                        id: {
+                            template() {
+                                return 'id footer';
+                            }
+                        },
+                        name: {
+                            template(summary) {
+                                console.log(summary);
+                                return 'name cnt : ' + summary.cnt;
+                            }
+                        },
+                        age: {
+                            template(summary) {
+                                return 'age avg : ' + summary.avg ;
+                            }
+                        }
+                    },
+                    defaultContent: {
+                        template() {
+                            return 'default footer';
+                        }
+                    }
+                }
+            })
+
+        })
+    </script>
+
+</head>
+
+<body>
+    <div id="grid"></div>
+</body>
+
+</html>

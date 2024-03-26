@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../node_modules/tui-date-picker/dist/tui-date-picker.min.css" />
+	<link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="../node_modules/tui-date-picker/dist/tui-date-picker.min.js"></script>
+	<script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
+
+</head>
+
+<body>
+	<div id="grid"></div>
+	<script>
+		const dataSource = {
+			api: {
+				readData: { url: 'date_read.html', method: 'GET' },
+				createData: { url: '/sample/createRepairData.do', method: 'POST' },
+				updateData: { url: '/sample/updateRepairData.do', method: 'PATCH' },
+				deleteData: { url: '/sample/deleteRepairData.do', method: 'DELETE' }
+			},
+			contentType: 'application/json',
+			headers: { 'x-custom-header': 'custom-header' }
+		}
+
+		const grid = new tui.Grid({
+			el: document.getElementById('grid'),
+			data: dataSource,
+			width: 1500,
+			scrollX: true,
+			scrollY: false,
+			columns: [
+				{
+					header: 'Name',
+					name: 'name'
+				},
+				{
+					header: 'Artist',
+					name: 'artist'
+				},
+				{
+					header: 'Date',
+					name: 'date',
+					editor: 'datePicker'
+				},
+				{
+					header: 'Release',
+					name: 'release'
+				},
+				{
+					header: 'Genre',
+					name: 'genre'
+				}
+			],
+			columnOptions: {
+				frozenCount: 1,
+				frozenBorderWidth: 2,
+				minWidth: 300
+			}
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "tui-date-picker": "^4.3.3",
+    "tui-grid": "^4.21.22"
+  }
+}
