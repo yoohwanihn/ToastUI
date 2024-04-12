@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TOAST UI Datepicker CSS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css">
+    <!-- TOAST UI Timepicker CSS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css">
+    <!-- TOAST UI Grid CSS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
+    <!-- jQuery JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- TOAST UI Datepicker JS -->
+    <script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.js"></script>
+    <!-- TOAST UI Timepicker JS -->
+    <script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.js"></script>
+    <!-- TOAST UI Grid JS -->
+    <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
+    <script src="./tree-dummy.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="grid"></div>
+</body>
+<script>
+    const grid = new tui.Grid({
+      el: document.getElementById('grid'),
+      data: treeData,
+      rowHeaders: ['checkbox'],
+      bodyHeight: 500,
+      treeColumnOptions: {
+        name: 'name',
+        useCascadingCheckbox: true
+      },
+      columns: [
+        {
+          header: 'Name',
+          name: 'name',
+          width: 300
+        },
+        {
+          header: 'Artist',
+          name: 'artist'
+        },
+        {
+          header: 'Type',
+          name: 'type'
+        },
+        {
+          header: 'Release',
+          name: 'release'
+        },
+        {
+          header: 'Genre',
+          name: 'genre'
+        }
+      ]
+    });
+
+</script>
+
+</html>
