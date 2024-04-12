@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.js"></script>
+    <script>
+        var today = new Date();
+        var picker = tui.DatePicker.createRangePicker({
+            startpicker: {
+                date: today,
+                input: '#startpicker-input',
+                container: '#startpicker-container'
+            },
+            endpicker: {
+                date: today,
+                input: '#endpicker-input',
+                container: '#endpicker-container'
+            },
+            selectableRanges: [
+                [today, new Date(today.getFullYear() + 1, today.getMonth(), today.getDate())]
+            ],
+            format: 'YYYY-MM-dd HH:mm',
+            timePicker: true
+        });
+
+        picker.on('change:end', () => {
+            console.log(123);
+        })
+    </script>
+</head>
+
+<body>
+
+    <div class="tui-datepicker-input tui-datetime-input tui-has-focus">
+        <input id="startpicker-input" type="text" aria-label="Date">
+        <span class="tui-ico-date"></span>
+        <div id="startpicker-container" style="margin-left: -1px;"></div>
+    </div>
+    <span>to</span>
+    <div class="tui-datepicker-input tui-datetime-input tui-has-focus">
+        <input id="endpicker-input" type="text" aria-label="Date">
+        <span class="tui-ico-date"></span>
+        <div id="endpicker-container" style="margin-left: -1px;"></div>
+    </div>
+
+</body>
+
+</html>
