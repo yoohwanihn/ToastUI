@@ -59,6 +59,18 @@
         }
       ]
     });
+    $(document).ready(function(){
+      const columnCount = grid.getColumns().length;
+
+      grid.on('click', function(ev) {
+        let key = ev.rowKey
+        grid.setSelectionRange({ start: [key, 0], end: [key, columnCount - 1]});
+      }); 
+
+      grid.on("onGridMounted", function() {
+        grid.setSelectionRange({ start: [0, 0], end: [0, columnCount - 1]});
+      })
+    })
 
 </script>
 
